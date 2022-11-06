@@ -1,7 +1,7 @@
 # Valorant-Insta-Locker
 Simple python script to lock in any agent in valorant faster than your teammates.
 
-### Usage:
+## Usage:
 - Have the script open when queing for a valorant match.
 - Recommended to have valorant in windowed display mode so that it is easier to switch back and forth.
   - There is a button to toggle display mode. 
