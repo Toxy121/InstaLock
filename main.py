@@ -83,7 +83,7 @@ layout = [
 
 #                                                Change this file to change the icon
 #                                                                v
-window = sg.Window("InstaLock", layout, icon=r'Icons/val.ico',background_color='#232323', grab_anywhere=False, margins= (5,10))
+window = sg.Window("InstaLock", layout, icon=r'img/val.ico',background_color='#232323', grab_anywhere=False, margins= (5,10))
 
 
 def open_val():
@@ -114,7 +114,7 @@ After choosing an agent, holding 'W' will
 start the script, letting go of 'W' will stop 
 it. Press 'Q' to choose a new agent.
 Tick the checkbox to automatically open 
-valorant when you select an agent.''', text_color='#999999', icon=r'Icons/val.ico', background_color='#111111', button_color='#999999', title='Instructions')
+valorant when you select an agent.''', text_color='#999999', icon=r'img/val.ico', background_color='#111111', button_color='#999999', title='Instructions')
     
     if event == 'jettpic':
         if checkbox == True:
