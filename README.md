@@ -11,7 +11,7 @@ InstaLock is a simple python script to lock in any agent in valorant faster than
 - Press `'Q'` if you want to switch agents. (It bugs out if you don't)
 ## Installation
 ```sh
-git clone https://github.com/Toxy121/Valorant-Insta-Locker.git or Download ZIP
+git clone https://github.com/Toxy121/Valorant-Insta-Locker.git OR Download ZIP
 
 cd Valorant-Insta-Locker
 
