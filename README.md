@@ -2,7 +2,7 @@
 <br>
 <a href="#start"><img height="130rem" src="https://raw.githubusercontent.com/Toxy121/InstaLock/main/img/logo.png"></a>
 <br><br>
-<a href="#start"><img width="250rem" src="https://cdn.jsdelivr.net/gh/Toxy121/InstaLock@main/img/logo.png?token=GHSAT0AAAAAABYFUSNJKLZHOPRSUJ2Y3OXOY3IAV3A"></a>
+<a href="#start"><img width="250rem" src="https://raw.githubusercontent.com/Toxy121/InstaLock/main/img/text.png"></a>
 <h1></h1>
 </p>
 
