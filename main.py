@@ -83,7 +83,7 @@ layout = [
 
 #                                                Change this file to change the icon
 #                                                                v
-window = sg.Window("Valorant Insta Locker", layout, icon=r'Icons/val.ico',background_color='#232323', grab_anywhere=False, margins= (5,10))
+window = sg.Window("InstaLock", layout, icon=r'Icons/val.ico',background_color='#232323', grab_anywhere=False, margins= (5,10))
 
 
 def open_val():
