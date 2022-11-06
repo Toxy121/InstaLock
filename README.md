@@ -1,4 +1,4 @@
-# Valorant-Insta-Locker
+# InstaLock
 Simple python script to lock in any agent in valorant faster than your teammates.
 
 ## Usage
