@@ -13,5 +13,7 @@ Simple python script to lock in any agent in valorant faster than your teammates
 `git clone https://github.com/Toxy121/Valorant-Insta-Locker.git  or  download zip`
 
 `cd Valorant-Insta-Locker`
+
 `pip install -r requirements.txt`
+
 `python main.py`
