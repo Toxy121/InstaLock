@@ -3,7 +3,6 @@ import time
 import keyboard
 import win32con
 import win32gui
-import win32con
 from pynput.mouse import Button, Controller
 import PySimpleGUI as sg
 import agents
