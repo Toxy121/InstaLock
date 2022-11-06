@@ -29,3 +29,11 @@ pip install -r requirements.txt
 
 python main.py
 ```
+## Python and Pip Installation
+```sh
+Install python from the microsoft store
+
+curl -sSL https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+
+python get-pip.py
+```
