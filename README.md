@@ -1,3 +1,10 @@
+<p id="start" align="center">
+<br>
+<a href="#start"><img height="130rem" src="https://raw.githubusercontent.com/Toxy121/InstaLock/main/img/logo.png"></a>
+<br><br>
+<a href="#start"><img width="250rem" src="https://raw.githubusercontent.com/xnbox/DeepfakeHTTP/main/img/logo_text.png"></a>
+<h1></h1>
+</p>
 
 # InstaLock
 InstaLock is a simple python script to lock in any agent in valorant faster than your teammates.
