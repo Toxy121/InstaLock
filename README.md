@@ -13,7 +13,7 @@ InstaLock is a simple python script to lock in any agent in valorant faster than
 
 ## Installation
 ```sh
-git clone https://github.com/Toxy121/Valorant-Insta-Locker.git OR Download ZIP
+git clone https://github.com/Toxy121/InstaLock.git OR Download ZIP
 
 cd InstaLock
 
