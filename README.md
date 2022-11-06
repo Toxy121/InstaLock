@@ -9,7 +9,7 @@ Simple python script to lock in any agent in valorant faster than your teammates
 - As you are loading into the match, hold `'W'` to activate the script.
   - Release `'W'` when you lock in the agent.
 - Press `'Q'` if you want to switch agents. (It bugs out if you don't)
-## installation
+## Installation
 `git clone https://github.com/Toxy121/Valorant-Insta-Locker.git  or  download zip`
 
 `cd Valorant-Insta-Locker`
