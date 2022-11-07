@@ -5,6 +5,7 @@ import win32con
 import win32gui
 from pynput.mouse import Button, Controller
 import PySimpleGUI as sg
+import random
 import agents
 mouse = Controller()
 
@@ -77,7 +78,8 @@ layout = [
     button_color=(sg.theme_background_color(),sg.theme_background_color()),border_width=0, key='yorupic')],
     [sg.Button(" Exit ", font='Helvetica 10 bold', button_color='#999999'),
     sg.Button("Toggle Display Mode", font='Helvetica 10 bold', button_color='#999999'),
-    sg.Checkbox("Auto Open Val", size=(11,30), key='-CHECKBOX-', font='Helvetica 10 bold', text_color='#999999', background_color='#232323'),]
+    sg.Button("Roulette", font='Helvetica 10 bold', button_color='#999999'),
+    sg.Checkbox("Auto Open Val", size=(11,30), key='-CHECKBOX-', font='Helvetica 10 bold', text_color='#999999', background_color='#232323')]
 ]
 
 
@@ -413,6 +415,23 @@ valorant when you select an agent.''', text_color='#999999', icon=r'img/val.ico'
         while keyboard.is_pressed('q') == False:
             if keyboard.is_pressed('w'): 
                 mouse.position = agents.reyna_coords
+                time.sleep(0.01)
+                mouse.click(Button.left, 1)
+                time.sleep(0.04)
+                mouse.position = agents.lock_in
+                time.sleep(0.01)
+                mouse.click(Button.left, 1)
+                time.sleep(0.04)
+            window.refresh()
+
+    if event == 'Roulette':
+        if checkbox == True:
+            open_val()
+
+        while keyboard.is_pressed('q') == False:
+            if keyboard.is_pressed('w'):
+                random_agent = random.choice(agents.agents_list)
+                mouse.position = random_agent
                 time.sleep(0.01)
                 mouse.click(Button.left, 1)
                 time.sleep(0.04)
