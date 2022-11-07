@@ -45,6 +45,9 @@ sova_coords = (1169,1007)
 viper_coords = (1256,1007)
 yoru_coords = (1338,1007)
 
+agents_list = [astra_coords, brim_coords, cypher_coords, jett_coords, 
+kj_coords, omen_coords, phoenix_coords, raze_coords, reyna_coords, 
+sage_coords, sova_coords, viper_coords, yoru_coords, breach_coords, neon_coords, harbor_coords, kayo_coords, fade_coords, skye_coords, chamber_coords]
 
 #brings valorant to foreground
 def open_val():
