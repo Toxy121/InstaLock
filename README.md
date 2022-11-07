@@ -9,6 +9,8 @@
 # InstaLock
 InstaLock is a simple python script to lock in any agent in valorant faster than your teammates.
 
+### You must have every agent or this script will not work
+
 ## Usage
 
 - Have the script open when queing for a valorant match.
@@ -28,12 +30,4 @@ cd InstaLock
 pip install -r requirements.txt
 
 python main.py
-```
-## Python and Pip Installation
-```sh
-Install python from the microsoft store
-
-curl -sSL https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-
-python get-pip.py
 ```
