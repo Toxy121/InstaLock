@@ -1,5 +1,6 @@
-pysimplegui
 pyautogui
 keyboard
 pywin32
 pynput
+requests
+valclient
