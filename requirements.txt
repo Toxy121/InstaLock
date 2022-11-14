@@ -1,4 +1,5 @@
 pyautogui
+PySimpleGUI
 keyboard
 pywin32
 pynput
