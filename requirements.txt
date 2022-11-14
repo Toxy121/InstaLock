@@ -4,3 +4,4 @@ pywin32
 pynput
 requests
 valclient
+PySimpleGUI
