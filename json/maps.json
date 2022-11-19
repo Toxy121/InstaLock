@@ -1,11 +1,12 @@
 {
     "maps": {
-        "ascent": "jett",
-        "bind": "raze",
-        "breeze": "neon",
-        "fracture": "raze",
-        "haven": "jett",
-        "icebox": "jett",
-        "pearl": "jett"
+        "region": "",
+        "ascent": "",
+        "bind": "",
+        "breeze": "",
+        "fracture": "",
+        "haven": "",
+        "icebox": "",
+        "pearl": ""
     }
 }
