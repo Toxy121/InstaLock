@@ -10,11 +10,16 @@ def main():
     system("title " + "InstaLock")
     with open('json/agents.json', 'r') as f:
         all_agents = json.load(f)
+    valid_regions = ['NA', 'LATAM', 'BR', 'EU', 'KR', 'AP', 'PBE']
     try:
         print(Fore.RED + " Please enter the agents you want for each map" + Fore.WHITE)
         dash = '-'
         print(" " + Fore.WHITE+ dash*46)
         while True:
+            region = input(Fore.WHITE + " Region: ")
+            if region.upper() not in valid_regions:
+                print(Fore.RED + "\n Invalid region" + Fore.WHITE)
+                sys.exit()
             ascent = input(Fore.BLUE +" Ascent: " + Fore.WHITE)
             bind = input(Fore.GREEN + " Bind: " + Fore.WHITE)
             breeze = input(Fore.YELLOW + " Breeze: " + Fore.WHITE)
@@ -91,6 +96,7 @@ def main():
 
         dictionary = {
             "maps": {
+                "region": region.lower(),
                 "ascent": ascent,
                 "bind": bind,
                 "breeze": breeze,
@@ -114,6 +120,54 @@ def main():
             sys.exit()
     except KeyboardInterrupt:
         sys.exit()
+
+
+def region():
+    system("title " + "InstaLock")
+    with open('json/maps.json', 'r') as f:
+        maps = json.load(f)
+    valid_regions = ['NA', 'LATAM', 'BR', 'EU', 'KR', 'AP', 'PBE']
+    try:
+        print(Fore.RED + " Please enter your region" + Fore.WHITE)
+        dash = '-'
+        print(" " + Fore.WHITE+ dash*46)
+        while True:
+            region = input(Fore.WHITE + " Region: ")
+            if region.upper() not in valid_regions:
+                print(Fore.RED + "\n Invalid region" + Fore.WHITE)
+                sys.exit()
+            else:
+                break
+        print("")
+
+
+        dictionary = {
+            "maps": {
+                "region": region.lower(),
+                "ascent": maps['maps']['ascent'],
+                "bind": maps['maps']['bind'],
+                "breeze": maps['maps']['breeze'],
+                "fracture": maps['maps']['fracture'],
+                "haven": maps['maps']['haven'],
+                "icebox": maps['maps']['icebox'],
+                "pearl": maps['maps']['pearl']
+            }
+        }
+
+
+        json_object = json.dumps(dictionary, indent=4)
+
+
+        with open("json/maps.json", "w") as outfile:
+            outfile.write(json_object)
+        print("Saved!")
+        sys.exit()
+
+
+    except KeyboardInterrupt:
+        sys.exit()
+
+
 
 if __name__ == '__main__':
     os.system('cls')
