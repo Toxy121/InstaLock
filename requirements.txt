@@ -1,0 +1,11 @@
+PyAutoGUI
+PySimpleGui
+keyboard
+pywin32
+pynput
+valclient
+requests
+colorama
+pillow
+win32gui
+opencv-python
