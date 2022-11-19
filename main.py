@@ -16,22 +16,41 @@ import string
 import edit_agents
 mouse = Controller()
 
+
+
+
 try:
+    with open('json/agents.json', 'r') as f:
+        all_agents = json.load(f)
+
+    with open('json/maps.json', 'r') as f:
+        maps = json.load(f)
+
+
     system("title " + "InstaLock")
-    playerRegion="na"
+    playerRegion=maps['maps']['region']
+    if playerRegion == '':
+        os.system('cls')
+        print(' Make Sure You Have Entered Your Region Correctly')
+        enter_region = input(" Would You Like To Enter Your Region Now? ")
+        if enter_region.lower() == 'yes' or enter_region.lower() == 'y':
+            print('')
+            edit_agents.region()
+        elif enter_region.lower() == 'no' or enter_region.lower() == 'n':
+            sys.exit()
+        else:
+            print(Fore.RED + 'Invalid Input' + Fore.WHITE)
+            sys.exit()
+
     client = Client(region=playerRegion)
     try:
         client.activate()
     except:
         print("Make sure you have Valorant open.")
     valid = False
-    all_agents = {}
+    #all_agents = {}
     seenMatches = []
-    with open('json/agents.json', 'r') as f:
-        all_agents = json.load(f)
-
-    with open('json/maps.json', 'r') as f:
-        maps = json.load(f)
+   
 
 
     def checkmap():
@@ -145,7 +164,7 @@ try:
     text = '                                            '
     underlined_text = "\x1B[4m" + text + "\x1B[0m"
     print(f'  {Fore.RED}Your Agents For Each Map{Fore.WHITE}')
-    print('')
+    print(f"\n  Region: {maps['maps']['region'].upper()}")
     print(f'''  ---------------------------
  |    {Fore.LIGHTBLUE_EX}Map{Fore.WHITE}     |    {Fore.GREEN}Agent{Fore.WHITE}     |
  |---------------------------|
@@ -168,37 +187,37 @@ try:
     while 1:
         if pyautogui.locateOnScreen('img/saved_ascent.png', region=(680,460,560,185), grayscale=True, confidence=0.8) != None:
             print("")
-            print(Fore.GREEN + 'Found Ascent')
+            print(Fore.GREEN + 'Found Ascent' + Fore.WHITE)
             lock_in(agent = maps['maps']['ascent'])
             sys.exit()
         elif pyautogui.locateOnScreen('img/saved_bind.png', region=(680,460,560,185), grayscale=True, confidence=0.8) != None:
             print("")
-            print(Fore.GREEN + 'Found Bind')
+            print(Fore.GREEN + 'Found Bind' + Fore.WHITE)
             lock_in(agent = maps['maps']['bind'])
             sys.exit()
         elif pyautogui.locateOnScreen('img/saved_breeze.png', region=(680,460,560,185), grayscale=True, confidence=0.8) != None:
             print("")
-            print(Fore.GREEN + 'Found Breeze')
+            print(Fore.GREEN + 'Found Breeze' + Fore.WHITE)
             lock_in(agent = maps['maps']['breeze'])
             sys.exit()
         elif pyautogui.locateOnScreen('img/saved_fracture.png', region=(680,460,560,185), grayscale=True, confidence=0.8) != None:
             print("")
-            print(Fore.GREEN + 'Found Fracture')
+            print(Fore.GREEN + 'Found Fracture' + Fore.WHITE)
             lock_in(agent = maps['maps']['fracture'])
             sys.exit()
         elif pyautogui.locateOnScreen('img/saved_haven.png', region=(680,460,560,185), grayscale=True, confidence=0.8) != None:
             print("")
-            print(Fore.GREEN + 'Found Haven')
+            print(Fore.GREEN + 'Found Haven' + Fore.WHITE)
             lock_in(agent = maps['maps']['haven'])
             sys.exit()
         elif pyautogui.locateOnScreen('img/saved_icebox.png', region=(680,460,560,185), grayscale=True, confidence=0.8) != None:
             print("")
-            print(Fore.GREEN + 'Found Icebox')
+            print(Fore.GREEN + 'Found Icebox' + Fore.WHITE)
             lock_in(agent = maps['maps']['icebox'])
             sys.exit()
         elif pyautogui.locateOnScreen('img/saved_pearl.png', region=(680,460,560,185), grayscale=True, confidence=0.8) != None:
             print("")
-            print(Fore.GREEN + 'Found Pearl')
+            print(Fore.GREEN + 'Found Pearl' + Fore.WHITE)
             lock_in(agent = maps['maps']['pearl'])
             sys.exit()
 except KeyboardInterrupt:
