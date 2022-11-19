@@ -1,7 +1,0 @@
-pyautogui
-PySimpleGUI
-keyboard
-pywin32
-pynput
-requests
-valclient
