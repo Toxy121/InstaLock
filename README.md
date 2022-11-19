@@ -12,9 +12,9 @@ InstaLock is a simple python script to lock in any agent in valorant faster than
 
 ## Usage
 
-1. Have the script open when queing for a valorant match.
-2. Click on the icon of the agent you want to lock in.
-3. The script will lock in the agent as you load into the game.
+1. Run edit_agents.py to choose what agent you want for each map.
+2. Run main.py and if everything went right, it should display the agents you picked for every map.
+3. Make sure to keep your game open as you are loading in, or it will not work.
 
 ## Installation
 ```sh
