@@ -1,17 +1,12 @@
 from pyautogui import *
-import pyautogui
-import time
 import sys
-import win32api, win32con
-import keyboard
-import win32gui
 from pynput.mouse import Button, Controller
 import json
 from requests import session
 from valclient.client import Client
 import os
 from os import system
-from colorama import Fore, Back, Style
+from colorama import Fore
 import string
 import edit_agents
 mouse = Controller()
@@ -20,15 +15,16 @@ mouse = Controller()
 
 
 try:
-    with open('json/agents.json', 'r') as f:
-        all_agents = json.load(f)
-
-    with open('json/maps.json', 'r') as f:
-        maps = json.load(f)
+    with open('json/data.json', 'r') as f:
+        data = json.load(f)
+        all_agents = data['all_agents']
+        maps = data['maps']
+        map_codes = data['map_codes']
+        region = data['region']
 
 
     system("title " + "InstaLock")
-    playerRegion=maps['maps']['region']
+    playerRegion=region
     if playerRegion == '':
         os.system('cls')
         print(' Make Sure You Have Entered Your Region Correctly')
@@ -54,7 +50,7 @@ try:
 
 
     def checkmap():
-        if maps['maps']['ascent'] == "" and maps['maps']['bind'] == "" and maps['maps']['breeze'] == "" and maps['maps']['fracture'] == "" and maps['maps']['haven'] == "" and maps['maps']['icebox'] == "" and maps['maps']['pearl'] == "":
+        if maps['ascent'] == "" and maps['bind'] == "" and maps['breeze'] == "" and maps['fracture'] == "" and maps['haven'] == "" and maps['icebox'] == "" and maps['pearl'] == "":
             os.system('cls')
             print(Fore.RED + "You have no agents for any map.")
             add_now = input(Fore.RED + "Would you like to add them now? "+Fore.WHITE)
@@ -67,54 +63,54 @@ try:
                 print("")
                 print(Fore.RED + "Invalid input." + Fore.WHITE)
                 sys.exit()
-        if maps['maps']['ascent'] == "" or maps['maps']['bind'] == "" or maps['maps']['breeze'] == "" or maps['maps']['fracture'] == "" or maps['maps']['haven'] == "" or maps['maps']['icebox'] == "" or maps['maps']['pearl'] == "":
+        if maps['ascent'] == "" or maps['bind'] == "" or maps['breeze'] == "" or maps['fracture'] == "" or maps['haven'] == "" or maps['icebox'] == "" or maps['pearl'] == "":
             os.system('cls')
             print(Fore.RED + "You do not have an agent for the following map(s):")
             dash = '-'
             print(Fore.WHITE+ dash*50)
-        if maps['maps']['ascent'] == "":
+        if maps['ascent'] == "":
             print(Fore.BLUE +"Ascent" + Fore.WHITE)
-        if maps['maps']['bind'] == "":
+        if maps['bind'] == "":
             print(Fore.GREEN + "Bind" + Fore.WHITE)
-        if maps['maps']['breeze'] == "":
+        if maps['breeze'] == "":
             print(Fore.YELLOW + "Breeze" + Fore.WHITE)
-        if maps['maps']['fracture'] == "":
+        if maps['fracture'] == "":
             print(Fore.CYAN + "Fracture" + Fore.WHITE)
-        if maps['maps']['haven'] == "":
+        if maps['haven'] == "":
             print(Fore.LIGHTMAGENTA_EX + "Haven" + Fore.WHITE)
-        if maps['maps']['icebox'] == "":
+        if maps['icebox'] == "":
             print(Fore.LIGHTRED_EX + "Icebox" + Fore.WHITE)
-        if maps['maps']['pearl'] == "":
+        if maps['pearl'] == "":
             print(Fore.LIGHTCYAN_EX + "Pearl" + Fore.WHITE)
-        if maps['maps']['ascent'] == "" or maps['maps']['bind'] == "" or maps['maps']['breeze'] == "" or maps['maps']['fracture'] == "" or maps['maps']['haven'] == "" or maps['maps']['icebox'] == "" or maps['maps']['pearl'] == "":
+        if maps['ascent'] == "" or maps['bind'] == "" or maps['breeze'] == "" or maps['fracture'] == "" or maps['haven'] == "" or maps['icebox'] == "" or maps['pearl'] == "":
             sys.exit()
-        if maps['maps']['ascent'] not in all_agents['all_agents']:
+        if maps['ascent'] not in all_agents:
             os.system('cls')
-            print(Fore.RED + maps['maps']['ascent'] + " is not a valid agent." + Fore.WHITE)
+            print(Fore.RED + maps['ascent'] + " is not a valid agent." + Fore.WHITE)
             sys.exit()
-        if maps['maps']['bind'] not in all_agents['all_agents']:
+        if maps['bind'] not in all_agents:
             os.system('cls')
-            print(Fore.RED + maps['maps']['bind'] + " is not a valid agent." + Fore.WHITE)
+            print(Fore.RED + maps['bind'] + " is not a valid agent." + Fore.WHITE)
             sys.exit()
-        if maps['maps']['breeze'] not in all_agents['all_agents']:
+        if maps['breeze'] not in all_agents:
             os.system('cls')
-            print(Fore.RED + maps['maps']['breeze'] + " is not a valid agent." + Fore.WHITE)
+            print(Fore.RED + maps['breeze'] + " is not a valid agent." + Fore.WHITE)
             sys.exit()
-        if maps['maps']['fracture'] not in all_agents['all_agents']:
+        if maps['fracture'] not in all_agents:
             os.system('cls')
-            print(Fore.RED + maps['maps']['fracture'] + " is not a valid agent." + Fore.WHITE)
+            print(Fore.RED + maps['fracture'] + " is not a valid agent." + Fore.WHITE)
             sys.exit()
-        if maps['maps']['haven'] not in all_agents['all_agents']:
+        if maps['haven'] not in all_agents:
             os.system('cls')
-            print(Fore.RED + maps['maps']['haven'] + " is not a valid agent." + Fore.WHITE)
+            print(Fore.RED + maps['haven'] + " is not a valid agent." + Fore.WHITE)
             sys.exit()
-        if maps['maps']['icebox'] not in all_agents['all_agents']:
+        if maps['icebox'] not in all_agents:
             os.system('cls')
-            print(Fore.RED + maps['maps']['icebox'] + " is not a valid agent." + Fore.WHITE)
+            print(Fore.RED + maps['icebox'] + " is not a valid agent." + Fore.WHITE)
             sys.exit()
-        if maps['maps']['pearl'] not in all_agents['all_agents']:
+        if maps['pearl'] not in all_agents:
             os.system('cls')
-            print(Fore.RED + maps['maps']['pearl'] + " is not a valid agent." + Fore.WHITE)
+            print(Fore.RED + maps['pearl'] + " is not a valid agent." + Fore.WHITE)
             sys.exit()
 
     checkmap()
@@ -122,17 +118,22 @@ try:
 
 
 
-    def lock_in(agent):
+    def lock_in():
         while True:
             try:
                 sessionState = client.fetch_presence(client.puuid)['sessionLoopState']
-                if ((sessionState == "PREGAME") and (client.pregame_fetch_match()['ID'] not in seenMatches)):
-                    print(Fore.GREEN + 'Agent Select Found')
-                    client.pregame_select_character(all_agents['all_agents'][agent])
-                    client.pregame_lock_character(all_agents['all_agents'][agent])
+                matchID = client.pregame_fetch_match()['ID']
+                if ((sessionState == "PREGAME") and (matchID not in seenMatches)):
+                    matchInfo = client.pregame_fetch_match(matchID)
+                    mapName = matchInfo["MapID"].split('/')[-1].lower()
+                    print(Fore.GREEN + f'Found {map_codes[mapName].capitalize()}' + Fore.WHITE)
+                    print(Fore.GREEN + 'Agent Select Found' + Fore.WHITE)
+                    client.pregame_select_character(all_agents[maps[map_codes[mapName].lower()]])
+                    client.pregame_lock_character(all_agents[maps[map_codes[mapName].lower()]])
+                    print(Fore.GREEN + 'Successfully Locked ' + maps[map_codes[mapName]] + Fore.WHITE)
                     seenMatches.append(client.pregame_fetch_match()['ID'])
-                    print(Fore.GREEN + 'Successfully Locked ' + agent.capitalize() + Fore.WHITE)
-                    break
+                    #break
+                    sys.exit()
             except Exception as e:
                         print('', end='')
 
@@ -144,19 +145,19 @@ try:
 
 
     #brimstone  | = 12
-    asc = len([ele for ele in maps['maps']['ascent'].capitalize() if ele in string.ascii_uppercase or ele in string.ascii_lowercase])
+    asc = len([ele for ele in maps['ascent'].capitalize() if ele in string.ascii_uppercase or ele in string.ascii_lowercase])
     asc_calc = 10 - asc
-    bind = len([ele for ele in maps['maps']['bind'].capitalize() if ele in string.ascii_uppercase or ele in string.ascii_lowercase])
+    bind = len([ele for ele in maps['bind'].capitalize() if ele in string.ascii_uppercase or ele in string.ascii_lowercase])
     bind_calc = 10 - bind
-    breeze = len([ele for ele in maps['maps']['breeze'].capitalize() if ele in string.ascii_uppercase or ele in string.ascii_lowercase])
+    breeze = len([ele for ele in maps['breeze'].capitalize() if ele in string.ascii_uppercase or ele in string.ascii_lowercase])
     breeze_calc = 10 - breeze
-    frac = len([ele for ele in maps['maps']['fracture'].capitalize() if ele in string.ascii_uppercase or ele in string.ascii_lowercase])
+    frac = len([ele for ele in maps['fracture'].capitalize() if ele in string.ascii_uppercase or ele in string.ascii_lowercase])
     frac_calc = 10 - frac
-    haven = len([ele for ele in maps['maps']['haven'].capitalize() if ele in string.ascii_uppercase or ele in string.ascii_lowercase])
+    haven = len([ele for ele in maps['haven'].capitalize() if ele in string.ascii_uppercase or ele in string.ascii_lowercase])
     haven_calc = 10 - haven
-    icebox = len([ele for ele in maps['maps']['icebox'].capitalize() if ele in string.ascii_uppercase or ele in string.ascii_lowercase])
+    icebox = len([ele for ele in maps['icebox'].capitalize() if ele in string.ascii_uppercase or ele in string.ascii_lowercase])
     icebox_calc = 10 - icebox
-    pearl = len([ele for ele in maps['maps']['pearl'].capitalize() if ele in string.ascii_uppercase or ele in string.ascii_lowercase])
+    pearl = len([ele for ele in maps['pearl'].capitalize() if ele in string.ascii_uppercase or ele in string.ascii_lowercase])
     pearl_calc = 10 - pearl
 
     space = ' '
@@ -164,17 +165,17 @@ try:
     text = '                                            '
     underlined_text = "\x1B[4m" + text + "\x1B[0m"
     print(f'  {Fore.RED}Your Agents For Each Map{Fore.WHITE}')
-    print(f"\n  Region: {maps['maps']['region'].upper()}")
+    print(f"\n  Region: {region.upper()}")
     print(f'''  ---------------------------
  |    {Fore.LIGHTBLUE_EX}Map{Fore.WHITE}     |    {Fore.GREEN}Agent{Fore.WHITE}     |
  |---------------------------|
- |   {Fore.LIGHTBLUE_EX}Ascent{Fore.WHITE}   |    {Fore.GREEN}{maps['maps']['ascent'].capitalize()}{asc_calc*space}{Fore.WHITE}|
- |   {Fore.LIGHTBLUE_EX}Bind{Fore.WHITE}     |    {Fore.GREEN}{maps['maps']['bind'].capitalize()}{bind_calc*space}{Fore.WHITE}|
- |   {Fore.LIGHTBLUE_EX}Breeze{Fore.WHITE}   |    {Fore.GREEN}{maps['maps']['breeze'].capitalize()}{breeze_calc*space}{Fore.WHITE}|
- |   {Fore.LIGHTBLUE_EX}Fracture{Fore.WHITE} |    {Fore.GREEN}{maps['maps']['fracture'].capitalize()}{frac_calc*space}{Fore.WHITE}|
- |   {Fore.LIGHTBLUE_EX}Haven{Fore.WHITE}    |    {Fore.GREEN}{maps['maps']['haven'].capitalize()}{haven_calc*space}{Fore.WHITE}|
- |   {Fore.LIGHTBLUE_EX}Icebox{Fore.WHITE}   |    {Fore.GREEN}{maps['maps']['icebox'].capitalize()}{icebox_calc*space}{Fore.WHITE}|
- |   {Fore.LIGHTBLUE_EX}Pearl{Fore.WHITE}    |    {Fore.GREEN}{maps['maps']['pearl'].capitalize()}{pearl_calc*space}{Fore.WHITE}|''')
+ |   {Fore.LIGHTBLUE_EX}Ascent{Fore.WHITE}   |    {Fore.GREEN}{maps['ascent'].capitalize()}{asc_calc*space}{Fore.WHITE}|
+ |   {Fore.LIGHTBLUE_EX}Bind{Fore.WHITE}     |    {Fore.GREEN}{maps['bind'].capitalize()}{bind_calc*space}{Fore.WHITE}|
+ |   {Fore.LIGHTBLUE_EX}Breeze{Fore.WHITE}   |    {Fore.GREEN}{maps['breeze'].capitalize()}{breeze_calc*space}{Fore.WHITE}|
+ |   {Fore.LIGHTBLUE_EX}Fracture{Fore.WHITE} |    {Fore.GREEN}{maps['fracture'].capitalize()}{frac_calc*space}{Fore.WHITE}|
+ |   {Fore.LIGHTBLUE_EX}Haven{Fore.WHITE}    |    {Fore.GREEN}{maps['haven'].capitalize()}{haven_calc*space}{Fore.WHITE}|
+ |   {Fore.LIGHTBLUE_EX}Icebox{Fore.WHITE}   |    {Fore.GREEN}{maps['icebox'].capitalize()}{icebox_calc*space}{Fore.WHITE}|
+ |   {Fore.LIGHTBLUE_EX}Pearl{Fore.WHITE}    |    {Fore.GREEN}{maps['pearl'].capitalize()}{pearl_calc*space}{Fore.WHITE}|''')
     print('  ---------------------------')
     #print(underlined_text)
     print('')
@@ -184,41 +185,7 @@ try:
 
 
 
-    while 1:
-        if pyautogui.locateOnScreen('img/saved_ascent.png', region=(680,460,560,185), grayscale=True, confidence=0.8) != None:
-            print("")
-            print(Fore.GREEN + 'Found Ascent' + Fore.WHITE)
-            lock_in(agent = maps['maps']['ascent'])
-            sys.exit()
-        elif pyautogui.locateOnScreen('img/saved_bind.png', region=(680,460,560,185), grayscale=True, confidence=0.8) != None:
-            print("")
-            print(Fore.GREEN + 'Found Bind' + Fore.WHITE)
-            lock_in(agent = maps['maps']['bind'])
-            sys.exit()
-        elif pyautogui.locateOnScreen('img/saved_breeze.png', region=(680,460,560,185), grayscale=True, confidence=0.8) != None:
-            print("")
-            print(Fore.GREEN + 'Found Breeze' + Fore.WHITE)
-            lock_in(agent = maps['maps']['breeze'])
-            sys.exit()
-        elif pyautogui.locateOnScreen('img/saved_fracture.png', region=(680,460,560,185), grayscale=True, confidence=0.8) != None:
-            print("")
-            print(Fore.GREEN + 'Found Fracture' + Fore.WHITE)
-            lock_in(agent = maps['maps']['fracture'])
-            sys.exit()
-        elif pyautogui.locateOnScreen('img/saved_haven.png', region=(680,460,560,185), grayscale=True, confidence=0.8) != None:
-            print("")
-            print(Fore.GREEN + 'Found Haven' + Fore.WHITE)
-            lock_in(agent = maps['maps']['haven'])
-            sys.exit()
-        elif pyautogui.locateOnScreen('img/saved_icebox.png', region=(680,460,560,185), grayscale=True, confidence=0.8) != None:
-            print("")
-            print(Fore.GREEN + 'Found Icebox' + Fore.WHITE)
-            lock_in(agent = maps['maps']['icebox'])
-            sys.exit()
-        elif pyautogui.locateOnScreen('img/saved_pearl.png', region=(680,460,560,185), grayscale=True, confidence=0.8) != None:
-            print("")
-            print(Fore.GREEN + 'Found Pearl' + Fore.WHITE)
-            lock_in(agent = maps['maps']['pearl'])
-            sys.exit()
+    while True:
+        lock_in()
 except KeyboardInterrupt:
     sys.exit()
