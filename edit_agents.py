@@ -1,5 +1,5 @@
 import json
-from colorama import Fore, Back, Style
+from colorama import Fore
 import os
 from os import system
 import sys
@@ -8,8 +8,11 @@ import sys
 
 def main():
     system("title " + "InstaLock")
-    with open('json/agents.json', 'r') as f:
-        all_agents = json.load(f)
+    with open('json/data.json', 'r') as f:
+        data = json.load(f)
+        all_agents = data['all_agents']
+        maps = data['maps']
+        map_codes = data['map_codes']
     valid_regions = ['NA', 'LATAM', 'BR', 'EU', 'KR', 'AP', 'PBE']
     try:
         print(Fore.RED + " Please enter the agents you want for each map" + Fore.WHITE)
@@ -18,7 +21,7 @@ def main():
         while True:
             region = input(Fore.WHITE + " Region: ")
             if region.upper() not in valid_regions:
-                print(Fore.RED + "\n Invalid region" + Fore.WHITE)
+                print(Fore.RED + "\n Make sure you enter one of the following regions:" + Fore.GREEN + "\n\n Na, Eu, Br, Kr, Ap, Latam, PBE" + Fore.WHITE)
                 sys.exit()
             ascent = input(Fore.BLUE +" Ascent: " + Fore.WHITE)
             bind = input(Fore.GREEN + " Bind: " + Fore.WHITE)
@@ -38,7 +41,7 @@ def main():
                 print("")
                 print(Fore.RED + "You cannot leave any fields blank." + Fore.WHITE)
                 sys.exit()
-            if ascent != '' and ascent not in all_agents['all_agents']:
+            if ascent != '' and ascent not in all_agents:
                 print("")
                 print(Fore.RED + f"{ascent} is not a valid agent." + Fore.WHITE)
                 sys.exit()
@@ -46,7 +49,7 @@ def main():
                 print("")
                 print(Fore.RED + "You cannot leave any fields blank." + Fore.WHITE)
                 sys.exit()
-            if bind != '' and bind not in all_agents['all_agents']:
+            if bind != '' and bind not in all_agents:
                 print("")
                 print(Fore.RED + f"{bind} is not a valid agent." + Fore.WHITE)
                 sys.exit()
@@ -54,7 +57,7 @@ def main():
                 print("")
                 print(Fore.RED + "You cannot leave any fields blank." + Fore.WHITE)
                 sys.exit()
-            if breeze != '' and breeze not in all_agents['all_agents']:
+            if breeze != '' and breeze not in all_agents:
                 print("")
                 print(Fore.RED + f"{breeze} is not a valid agent." + Fore.WHITE)
                 sys.exit()
@@ -62,7 +65,7 @@ def main():
                 print("")
                 print(Fore.RED + "You cannot leave any fields blank." + Fore.WHITE)
                 sys.exit()
-            if fracture != '' and fracture not in all_agents['all_agents']:
+            if fracture != '' and fracture not in all_agents:
                 print("")
                 print(Fore.RED + f"{fracture} is not a valid agent." + Fore.WHITE)
                 sys.exit()
@@ -70,7 +73,7 @@ def main():
                 print("")
                 print(Fore.RED + "You cannot leave any fields blank." + Fore.WHITE)
                 sys.exit()
-            if haven != '' and haven not in all_agents['all_agents']:
+            if haven != '' and haven not in all_agents:
                 print("")
                 print(Fore.RED + f"{haven} is not a valid agent." + Fore.WHITE)
                 sys.exit()
@@ -78,7 +81,7 @@ def main():
                 print("")
                 print(Fore.RED + "You cannot leave any fields blank." + Fore.WHITE)
                 sys.exit()
-            if icebox != '' and icebox not in all_agents['all_agents']:
+            if icebox != '' and icebox not in all_agents:
                 print("")
                 print(Fore.RED + f"{icebox} is not a valid agent." + Fore.WHITE)
                 sys.exit()
@@ -86,7 +89,7 @@ def main():
                 print("")
                 print(Fore.RED + "You cannot leave any fields blank." + Fore.WHITE)
                 sys.exit()
-            if pearl != '' and pearl not in all_agents['all_agents']:
+            if pearl != '' and pearl not in all_agents:
                 print("")
                 print(Fore.RED + f"{pearl} is not a valid agent." + Fore.WHITE)
                 sys.exit()
@@ -95,23 +98,28 @@ def main():
         ask = input("Are you sure you want to save these agents? ")
 
         dictionary = {
+            "region": region.lower(),
+
+            "all_agents": all_agents,
+
             "maps": {
-                "region": region.lower(),
-                "ascent": ascent,
-                "bind": bind,
-                "breeze": breeze,
-                "fracture": fracture,
-                "haven": haven,
-                "icebox": icebox,
-                "pearl": pearl
-            }
+                "ascent": ascent.lower(),
+                "bind": bind.lower(),
+                "breeze": breeze.lower(),
+                "fracture": fracture.lower(),
+                "haven": haven.lower(),
+                "icebox": icebox.lower(),
+                "pearl": pearl.lower()
+            },
+
+            "map_codes": map_codes
         }
 
 
         json_object = json.dumps(dictionary, indent=4)
 
         if ask.lower() == "yes" or ask.lower() == "y":
-            with open("json/maps.json", "w") as outfile:
+            with open("json/data.json", "w") as outfile:
                 outfile.write(json_object)
             print("Saved!")
             sys.exit()
@@ -124,8 +132,11 @@ def main():
 
 def region():
     system("title " + "InstaLock")
-    with open('json/maps.json', 'r') as f:
-        maps = json.load(f)
+    with open('json/data.json', 'r') as f:
+        data = json.load(f)
+        all_agents = data['all_agents']
+        maps = data['maps']
+        map_codes = data['map_codes']
     valid_regions = ['NA', 'LATAM', 'BR', 'EU', 'KR', 'AP', 'PBE']
     try:
         print(Fore.RED + " Please enter your region" + Fore.WHITE)
@@ -134,7 +145,7 @@ def region():
         while True:
             region = input(Fore.WHITE + " Region: ")
             if region.upper() not in valid_regions:
-                print(Fore.RED + "\n Invalid region" + Fore.WHITE)
+                print(Fore.RED + "\n Make sure you enter one of the following regions:" + Fore.GREEN + "\n\n Na, Eu, Br, Kr, Ap, Latam, PBE" + Fore.WHITE)
                 sys.exit()
             else:
                 break
@@ -142,23 +153,21 @@ def region():
 
 
         dictionary = {
-            "maps": {
-                "region": region.lower(),
-                "ascent": maps['maps']['ascent'],
-                "bind": maps['maps']['bind'],
-                "breeze": maps['maps']['breeze'],
-                "fracture": maps['maps']['fracture'],
-                "haven": maps['maps']['haven'],
-                "icebox": maps['maps']['icebox'],
-                "pearl": maps['maps']['pearl']
-            }
+            "region": region.lower(),
+
+            "all_agents": all_agents,
+
+            "maps": maps,
+
+            "map_codes": map_codes
+
         }
 
 
         json_object = json.dumps(dictionary, indent=4)
 
 
-        with open("json/maps.json", "w") as outfile:
+        with open("json/data.json", "w") as outfile:
             outfile.write(json_object)
         print("Saved!")
         sys.exit()
